@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    <title>Create and Read Pets</title>
+</head>
+<body>
+    <div class="section list">
+        <div class="container">
+            <h3>All the Pets!</h3>
+            <table class="u-full-width">
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Name</td>
+                        <td>Type</td>
+                    </tr>
+                </thead>
+                <tbody>
+                {% if pet_data.pets_list %}
+                {% for pet in pet_data.pets_list %}
+                <tr>
+                    <td>{{pet.id}}</td>
+                    <td>{{pet.name}}</td>
+                    <td>{{pet.type}}</td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>No Pets</td>
+                </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="section form">
+        <div class="container">
+            <h3>Add a pet</h3>
+            <form action="/add_pet" method="POST">
+                <div class="row">
+                    <div class="form-input">
+                        <label for="pname">Pet Name: </label>
+                        <input class="u-full-width" type="text" name="pname" id="pname">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-input">
+                        <label for="ptype">Pet Type: </label>
+                        <input class="u-full-width" type="text" name="ptype" id="ptype">
+                    </div>
+                </div>
+                <input class="button-primary" type="submit" value="Add Pet">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

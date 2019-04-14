@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    <title>User {{user.id}}</title>
+</head>
+<body>
+    <div class="section list">
+        <div class="container header">
+            <a href="/users">Home</a>
+        </div>
+        <div class="container info">
+            <h1>User {{user.id}}</h1>
+            <p>Full Name: {{user.first_name}} {{user.last_name}}</p>
+            <p>Email: {{user.email_address}}</p>
+            <p>Created on: {{user.created.strftime('%b %d, %Y')}}</p>
+            <p>Updated on: {{user.modified.strftime('%b %d, %Y at %I:%M %p')}}</p>
+        </div>
+        <div class="container info">
+            <p><a href="/users/{{user.id}}/edit">Edit</a> | <a href="/users/{{user.id}}/destroy">Delete</a></p>
+        </div>
+    </div>
+</body>
+</html>

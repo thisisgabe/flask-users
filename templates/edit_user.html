@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    <title>Edit User {{user.id}}</title>
+</head>
+
+<body>
+    <div class="section">
+        <div class="container header">
+            <a href="/users">Home</a>
+        </div>
+        <div class="container form">
+            <h3>Edit User {{user.id}}</h3>
+            <form action="/users/{{user.id}}/update" method="POST">
+                <div class="row">
+                    <div class="form-input">
+                        <label for="fname">First Name: </label>
+                        <input class="u-full-width" type="text" name="fname" id="fname" value="{{user.first_name}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-input">
+                        <label for="lname">Last Name: </label>
+                        <input class="u-full-width" type="text" name="lname" id="lname" value="{{user.last_name}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-input">
+                        <label for="email">Email: </label>
+                        <input class="u-full-width" type="text" name="email" id="email" value="{{user.email_address}}">
+                    </div>
+                </div>
+                <input class="button-primary" type="submit" value="Update User">
+            </form>
+        </div>
+        <div class="container">
+            <p><a href="/users/{{user.id}}">Show User</a></p>
+        </div>
+    </div>
+</body>
+
+</html>
